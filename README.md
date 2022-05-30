@@ -1,4 +1,2 @@
 # hello-world
-Just another repository
-
-Hi, I am yld.
+How to push commit to a repository
