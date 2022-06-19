@@ -1,8 +1,8 @@
 一个内存分配算法的讨论：
 ```C
-	struct vma *vmainit(unsigned long start, unsigned long end);
-	unsigned long vmaalloc(struct vma *vmap, unsigned long len);
-	unsigned long vmadealloc(struct vma *vmap, unsigned long addr, unsigned long len);
+struct vma *vmainit(unsigned long start, unsigned long end);
+unsigned long vmaalloc(struct vma *vmap, unsigned long len);
+unsigned long vmadealloc(struct vma *vmap, unsigned long addr, unsigned long len);
 
 ```
 
@@ -12,15 +12,15 @@
 `vmadealloc`：释放一块从`addr`开始，长度为`len`的内存。返回实际释放的长度，出现错误则返回0。
 如果增加一个限制：
 ```C
-	#define NVMA 16
-	struct vma {
-		unsigned long start;
-		unsigned long end;
-		
-		struct {
-			unsigned long vma_start;
-			unsigned long vma_end;
-		} vma_recorders[NVMA];
-	}
+#define NVMA 16
+struct vma {
+	unsigned long start;
+	unsigned long end;
+	
+	struct {
+		unsigned long vma_start;
+		unsigned long vma_end;
+	} vma_recorders[NVMA];
+}
 ```
 你又要怎么样作实现？
